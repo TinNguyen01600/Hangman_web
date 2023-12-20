@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-const Notification = () => {
+const Notification = ({ wrongLetters }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (e) => {
@@ -21,7 +21,7 @@ const Notification = () => {
 
             {/* Popup */}
             <Popup
-                open={inputValue === 'a'}
+                open={wrongLetters.some(letter => letter === inputValue)}
                 modal
                 nested
             >
