@@ -2,40 +2,15 @@ const Figure = () => {
     return (
         <svg width="250" height="200">
             {/* Head */}
-            <circle cx="140" cy="70" r="20" />
+            <circle cx="200" cy="70" r="20" />
             {/* Body */}
-            <line x1="140" y1='90' x2='140' y2='150'
-                style={{
-                    stroke: 'black',
-                    strokeWidth: 4
-                }} 
-            />
+            <line x1="200" y1='90' x2='200' y2='150' className="figure-part"/>
             {/* 2 hands */}
-            <line x1="140" y1='90' x2='170' y2='130'
-                style={{
-                    stroke: 'black',
-                    strokeWidth: 4
-                }} 
-            />
-            <line x1="140" y1='90' x2='110' y2='130'
-                style={{
-                    stroke: 'black',
-                    strokeWidth: 4
-                }} 
-            />
+            <line x1="200" y1='90' x2='230' y2='130' className="figure-part"/>
+            <line x1="200" y1='90' x2='170' y2='130' className="figure-part"/>
             {/* 2 legs */}
-            <line x1="140" y1='150' x2='170' y2='200'
-                style={{
-                    stroke: 'black',
-                    strokeWidth: 4
-                }} 
-            />
-            <line x1="140" y1='150' x2='110' y2='200'
-                style={{
-                    stroke: 'black',
-                    strokeWidth: 4
-                }} 
-            />
+            <line x1="200" y1='150' x2='230' y2='200' className="figure-part"/>
+            <line x1="200" y1='150' x2='170' y2='200' className="figure-part"/>
         </svg>
 
     )
