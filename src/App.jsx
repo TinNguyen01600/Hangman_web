@@ -4,6 +4,7 @@ import Header from './components/Header'
 import PopUp from './components/PopUp'
 import Word from './components/Word'
 import WrongLetters from './components/WrongLetters'
+import Notification from './components/Notification'
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <WrongLetters />
                 <Word />
                 <PopUp />
+                <Notification />
             </div>
         </>
     )
