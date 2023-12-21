@@ -66,11 +66,13 @@ body {
 }
 
 .letter {
+    height: 40px;
+    width: 40px;
+    font-size: 50px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 40px;
-    border-bottom: 10px solid black;
-    font-size: 60px;
+    
+    border: 1px solid black;
 }
