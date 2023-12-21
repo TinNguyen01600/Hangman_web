@@ -1,10 +1,10 @@
 import './App.css'
 import Figure from './components/Figure'
 import Header from './components/Header'
-import PopUp from './components/PopUp'
+import EndgamePopup from './components/EndgamePopup'
 import Word from './components/Word'
 import WrongLetters from './components/WrongLetters'
-import Notification from './components/Notification'
+import NotificationPopup from './components/NotificationPopup'
 import { useEffect, useState } from 'react'
 
 const words = ['react', 'tranquil', 'mechanization', 'christmas']
@@ -58,8 +58,13 @@ function App() {
                 <Figure wrongLetters={wrongLetters} />
                 <WrongLetters wrongLetters={wrongLetters} />
                 <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-                <PopUp />
-                <Notification
+                <EndgamePopup 
+                    correctLetters={correctLetters}
+                    wrongLetters={wrongLetters}
+                    selectedWord={selectedWord}
+                    setPlayable={setPlayable}
+                />
+                <NotificationPopup
                     wrongLetters={wrongLetters}
                     enteredLetter={enteredLetter}
                     setEnteredLetter={setEnteredLetter}
