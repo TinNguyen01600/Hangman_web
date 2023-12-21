@@ -15,6 +15,7 @@ function App() {
     const [playable, setPlayable] = useState(true)
     const [correctLetters, setCorrectLetters] = useState([])
     const [wrongLetters, setWrongLetters] = useState([])
+    const [enteredLetter, setEnteredLetter] = useState('')
 
     useEffect(() => {
         const handleKeydown = event => {
@@ -26,7 +27,8 @@ function App() {
                         setCorrectLetters(currentLetters => [...currentLetters, letter])
                     }
                     else {
-                        // show notification for correct letters
+                        // show notification for repeated correct letters
+                        setEnteredLetter(letter)
                     }
                 }
                 else {
@@ -34,7 +36,8 @@ function App() {
                         setWrongLetters(currentLetters => [...currentLetters, letter])
                     }
                     else {
-                        // show notification for wrong letters
+                        // show notification for repeated wrong letters
+                        setEnteredLetter(letter)
                     }
                 }
             }
@@ -52,11 +55,15 @@ function App() {
         <>
             <Header />
             <div className='game-ctn'>
-                <Figure />
+                <Figure wrongLetters={wrongLetters} />
                 <WrongLetters wrongLetters={wrongLetters} />
                 <Word selectedWord={selectedWord} correctLetters={correctLetters} />
                 <PopUp />
-                <Notification wrongLetters={wrongLetters} />
+                <Notification
+                    wrongLetters={wrongLetters}
+                    enteredLetter={enteredLetter}
+                    setEnteredLetter={setEnteredLetter}
+                />
             </div>
         </>
     )
