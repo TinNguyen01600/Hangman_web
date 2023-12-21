@@ -8,7 +8,7 @@ import NotificationPopup from './components/NotificationPopup'
 import { useEffect, useState } from 'react'
 
 const words = ['react', 'tranquil', 'mechanization', 'christmas']
-const selectedWord = words[Math.floor(Math.random() * words.length)]
+let selectedWord = words[Math.floor(Math.random() * words.length)]
 
 
 function App() {
@@ -51,6 +51,13 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeydown)
     }, [correctLetters, wrongLetters, playable])
 
+    const playAgain = () => {
+        setCorrectLetters([])
+        setWrongLetters([])
+        setPlayable(true)
+        selectedWord = words[Math.floor(Math.random() * words.length)]
+    }
+
     return (
         <>
             <Header />
@@ -63,6 +70,7 @@ function App() {
                     wrongLetters={wrongLetters}
                     selectedWord={selectedWord}
                     setPlayable={setPlayable}
+                    playAgain={playAgain}
                 />
                 <NotificationPopup
                     wrongLetters={wrongLetters}
