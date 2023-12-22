@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index'
 import ConfettiExplosion from 'react-confetti-explosion';
+import { motion } from "framer-motion";
 
 const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain }) => {
     const finalMessageRevealWord = 'The word is: ' + selectedWord
@@ -31,8 +32,22 @@ const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable,
                     <div>
                         <h2>{finalMessage}</h2>
                         <h3>{finalMessageRevealWord}</h3>
-                        <button onClick={close}>Close</button>
-                        <button onClick={playAgain}>PLay Again</button>
+                        <motion.button
+                            className="close-btn"
+                            onClick={close}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                        >
+                            Close
+                        </motion.button>
+                        <motion.button
+                            onClick={playAgain}
+                            className="play-again-btn"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                        >
+                            PLay Again
+                        </motion.button>
                     </div>
                 )}
 

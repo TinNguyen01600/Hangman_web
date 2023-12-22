@@ -74,3 +74,28 @@ body {
     
     border: 1px solid black;
 }
+
+/***********************************************************************/
+
+.close-btn {
+    background-color: rgb(244, 37, 37);
+    color: white;
+    font-size: large;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    cursor: pointer;
+}
+
+.play-again-btn {
+    background-color: rgb(36, 179, 0);
+    color: white;
+    font-size: large;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 10px;
+    margin: 10px 10px;
+    cursor: pointer;
+    border: 2px solid black;
+}

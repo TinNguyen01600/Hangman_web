@@ -1,6 +1,7 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { motion } from 'framer-motion';
 
 const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
     return (
@@ -8,7 +9,7 @@ const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnt
             <Popup
                 open={
                     wrongLetters.some(letter => letter === enteredLetter) ||
-                    correctLetters.some(letter => letter === enteredLetter) 
+                    correctLetters.some(letter => letter === enteredLetter)
                 }
                 modal
                 nested
@@ -17,7 +18,14 @@ const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnt
                 {close => (
                     <div className='popup-ctn'>
                         You have already entered this letter
-                        <button onClick={close}>Close</button>
+                        <motion.button
+                            className="close-btn"
+                            onClick={close}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                        >
+                            Close
+                        </motion.button>
                     </div>
                 )}
             </Popup>
