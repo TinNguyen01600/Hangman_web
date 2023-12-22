@@ -5,7 +5,7 @@ const Word = ({ selectedWord, correctLetters }) => {
         visible: {
             x: 0,
             transition: { 
-                delay: 1,
+                delay: 1.5,
                 when: 'beforeChildren', 
                 staggerChildren: 0.3 
             }
@@ -35,6 +35,7 @@ const Word = ({ selectedWord, correctLetters }) => {
                     className='letter'
                     key={i}
                     variants={boxItemVariant}
+                    whileHover={{ scale: 1.5 }}
                 >
                     {correctLetters.includes(letter) ? letter : ''}
                 </motion.span>

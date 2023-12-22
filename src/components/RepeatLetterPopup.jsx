@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-const NotificationPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
+const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
     return (
         <div>
             <Popup
@@ -25,4 +25,4 @@ const NotificationPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnt
     );
 };
 
-export default NotificationPopup;
+export default RepeatLetterPopup;

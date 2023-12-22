@@ -1,22 +1,30 @@
 import { motion } from "framer-motion"
 
 const Header = () => {
+    const boxVariant = {
+        initial: { y: '-10vw' },
+        visible: {
+            y: 0,
+            transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.5
+            }
+        }
+    }
+    const boxItemVariant = {
+        initial: { y: '-10vw' },
+        visible: {y: 0,}
+    }
     return (
-        <div className="header">
-            <motion.h1
-                initial={{ y: '-100vw' }}
-                animate={{
-                    y: 0,
-                    transition: {
-                        type: 'spring',
-                        stiffness: 60
-                    }
-                }}
-            >
-                HANG-MAN
-            </motion.h1>
-            <p>Find the hidden word - Enter a letter</p>
-        </div>
+        <motion.div
+            className="header"
+            variants={boxVariant}
+            initial='initial'
+            animate='visible'
+        >
+            <motion.h1 variants={boxItemVariant}>HANG-MAN</motion.h1>
+            <motion.p variants={boxItemVariant}>Find the hidden word - Enter a letter</motion.p>
+        </motion.div>
     )
 }
 

@@ -4,7 +4,7 @@ import Header from './components/Header'
 import EndgamePopup from './components/EndgamePopup'
 import Word from './components/Word'
 import WrongLetters from './components/WrongLetters'
-import NotificationPopup from './components/NotificationPopup'
+import RepeatLetterPopup from './components/RepeatLetterPopup'
 import { useEffect, useState } from 'react'
 
 const words = ['react', 'tranquil', 'mechanization', 'christmas']
@@ -73,7 +73,7 @@ function App() {
                     setPlayable={setPlayable}
                     playAgain={playAgain}
                 />
-                <NotificationPopup
+                <RepeatLetterPopup
                     correctLetters={correctLetters}
                     wrongLetters={wrongLetters}
                     enteredLetter={enteredLetter}

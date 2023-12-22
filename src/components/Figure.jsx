@@ -13,8 +13,10 @@ const Figure = ({ wrongLetters }) => {
                 {/* Head */}
                 {error > 0 && <svg>
                     <circle cx="200" cy="70" r="20" className="figure-part" fill="none" />
-                    <circle cx="192" cy="68" r="2" className="figure-part" />
-                    <circle cx="208" cy="68" r="2" className="figure-part" />
+                    <line x1="187" y1='60' x2='197' y2='70' className="figure-part" />
+                    <line x1="197" y1='60' x2='187' y2='70' className="figure-part" />
+                    <line x1="203" y1='60' x2='213' y2='70' className="figure-part" />
+                    <line x1="213" y1='60' x2='203' y2='70' className="figure-part" />
                 </svg>}
 
 
