@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index'
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain }) => {
     const finalMessageRevealWord = 'The word is: ' + selectedWord
@@ -9,11 +10,18 @@ const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable,
     const finalMessage = isLose ? 'You lost' : isWin ? 'Congrats! You won' : ''
 
     let playable = true
-    if (isLose || isWin)    playable = false
+    if (isLose || isWin) playable = false
     useEffect(() => setPlayable(playable))
 
     return (
         <div>
+            {isWin && <ConfettiExplosion
+                duration={8000}
+                force={0.9}
+                particleCount={400}
+                height='500vh'
+                width={2000}
+            />}
             <Popup
                 open={isLose || isWin}
                 modal

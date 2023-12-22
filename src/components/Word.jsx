@@ -1,18 +1,24 @@
 import { motion } from "framer-motion"
 const Word = ({ selectedWord, correctLetters }) => {
     const boxVariant = {
+        initial: { x: '75vw' },
         visible: {
-            transition: { staggerChildren: 0.2 }
+            x: 0,
+            transition: { 
+                delay: 1,
+                when: 'beforeChildren', 
+                staggerChildren: 0.3 
+            }
         }
     }
     const boxItemVariant = {
-        initial: { y: '40vw' },
+        initial: { x: '75vw' },
         visible: {
-            y: 0,
-            rotate: 720,
+            x: 0,
+            rotate: -1440,
             transition: {
                 type: 'spring',
-                stiffness: 60,
+                stiffness: 40,
             }
         }
     }
