@@ -56,6 +56,7 @@ function App() {
         setWrongLetters([])
         setPlayable(true)
         selectedWord = words[Math.floor(Math.random() * words.length)]
+        window.location.reload(false);
     }
 
     return (
@@ -65,7 +66,7 @@ function App() {
                 <Figure wrongLetters={wrongLetters} />
                 <WrongLetters wrongLetters={wrongLetters} />
                 <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-                <EndgamePopup 
+                <EndgamePopup
                     correctLetters={correctLetters}
                     wrongLetters={wrongLetters}
                     selectedWord={selectedWord}
@@ -73,6 +74,7 @@ function App() {
                     playAgain={playAgain}
                 />
                 <NotificationPopup
+                    correctLetters={correctLetters}
                     wrongLetters={wrongLetters}
                     enteredLetter={enteredLetter}
                     setEnteredLetter={setEnteredLetter}

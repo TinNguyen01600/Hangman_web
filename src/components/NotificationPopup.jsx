@@ -2,11 +2,14 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-const NotificationPopup = ({ wrongLetters, enteredLetter, setEnteredLetter }) => {
+const NotificationPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
     return (
         <div>
             <Popup
-                open={wrongLetters.some(letter => letter === enteredLetter)}
+                open={
+                    wrongLetters.some(letter => letter === enteredLetter) ||
+                    correctLetters.some(letter => letter === enteredLetter) 
+                }
                 modal
                 nested
                 onClose={() => setEnteredLetter('')}    // called whenever popup box close, regardless of whether it was closed by clicking the close button inside the popup or clicking outside the popup.
