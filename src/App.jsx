@@ -5,6 +5,7 @@ import EndgamePopup from './components/EndgamePopup'
 import Word from './components/Word'
 import WrongLetters from './components/WrongLetters'
 import RepeatLetterPopup from './components/RepeatLetterPopup'
+import Notification from './components/Notification'
 import { useEffect, useState } from 'react'
 
 const words = ['react', 'tranquil', 'mechanization', 'christmas']
@@ -16,6 +17,7 @@ function App() {
     const [correctLetters, setCorrectLetters] = useState([])
     const [wrongLetters, setWrongLetters] = useState([])
     const [enteredLetter, setEnteredLetter] = useState('')
+    const [showNotification, setShowNotification] = useState(false)
 
     useEffect(() => {
         const handleKeydown = event => {
@@ -45,6 +47,18 @@ function App() {
         // listen for the event 'press key down' from window
         // then func handleKeydown is called
         window.addEventListener('keydown', handleKeydown)
+
+        /*************************************************************************** */
+
+        const showNoti = () => {
+            if (wrongLetters.length >= 3) {
+                setShowNotification(true)
+                setTimeout(() => setShowNotification(false), 2000)
+            }
+        }
+        showNoti()
+
+        /*************************************************************************** */
 
         // clean up all the event listeners created
         // so we only have 1 EL at 1 time
@@ -81,6 +95,10 @@ function App() {
                     playAgain={playAgain}
                 />
             </div>
+            <Notification
+                showNotification={showNotification}
+                wrongLetters={wrongLetters}
+            />
         </>
     )
 }
