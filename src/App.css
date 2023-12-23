@@ -85,6 +85,14 @@ body {
     border-radius: 15px
 }
 
+.final-msg {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+/***********************************************************************/
+
 .close-btn {
     background-color: rgb(244, 37, 37);
     color: white;

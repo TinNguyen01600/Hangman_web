@@ -12,7 +12,7 @@ const Notification = ({ showNotification, wrongLetters }) => {
                     transition={{duration: 2.8,}}
                 >
                     <WarningAmberIcon />
-                    You have {attempts} attemp(s) left
+                    You have {attempts} attempt(s) left
                     <WarningAmberIcon />
                 </motion.div>
             }

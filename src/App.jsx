@@ -21,7 +21,7 @@ function App() {
 
     useEffect(() => {
         const showNoti = () => {
-            if (wrongLetters.length >= 2 && wrongLetters.length <= 5) {
+            if (wrongLetters.length >= 2 && wrongLetters.length <= 4) {
                 setShowNotification(true)
                 setTimeout(() => setShowNotification(false), 3000)
             }
@@ -40,9 +40,9 @@ function App() {
                     }
                 }
                 else {
-                    showNoti()
                     if (!wrongLetters.includes(letter)) {
                         setWrongLetters(currentLetters => [...currentLetters, letter])
+                        showNoti()
                     }
                     else {
                         // show notification for repeated wrong letters

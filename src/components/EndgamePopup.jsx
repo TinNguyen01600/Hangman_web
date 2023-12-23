@@ -3,11 +3,17 @@ import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index'
 import ConfettiExplosion from 'react-confetti-explosion';
 import { motion } from "framer-motion";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 
 const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain }) => {
     const isWin = selectedWord.split('').every(letter => correctLetters.includes(letter))
     const isLose = wrongLetters.length === 6
-    const finalMessage = isLose ? 'You lost! :(( ' : isWin ? 'Congrats! You won!' : ''
+    const finalMessage = isLose 
+    ?  <div className="final-msg"><SentimentVeryDissatisfiedIcon />You lost!<SentimentVeryDissatisfiedIcon /></div>
+    : isWin 
+    ? <div className="final-msg"><SentimentVerySatisfiedIcon />Congrats! You won!<SentimentVerySatisfiedIcon /></div>
+    : ''
     const finalMessageRevealWord = 'The word is: ' + selectedWord
 
     let playable = true
