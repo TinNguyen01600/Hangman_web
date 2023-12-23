@@ -85,11 +85,6 @@ body {
     border-radius: 15px
 }
 
-.popup-content {
-    background-color: 'rgba(125, 255, 255, 0.976)';
-    border-radius: '15px'
-}
-
 .close-btn {
     background-color: rgb(244, 37, 37);
     color: white;

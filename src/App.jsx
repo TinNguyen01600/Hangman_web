@@ -66,18 +66,19 @@ function App() {
                 <Figure wrongLetters={wrongLetters} />
                 <WrongLetters wrongLetters={wrongLetters} />
                 <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+                <RepeatLetterPopup
+                    correctLetters={correctLetters}
+                    wrongLetters={wrongLetters}
+                    enteredLetter={enteredLetter}
+                    setEnteredLetter={setEnteredLetter}
+                    setPlayable={setPlayable}
+                />
                 <EndgamePopup
                     correctLetters={correctLetters}
                     wrongLetters={wrongLetters}
                     selectedWord={selectedWord}
                     setPlayable={setPlayable}
                     playAgain={playAgain}
-                />
-                <RepeatLetterPopup
-                    correctLetters={correctLetters}
-                    wrongLetters={wrongLetters}
-                    enteredLetter={enteredLetter}
-                    setEnteredLetter={setEnteredLetter}
                 />
             </div>
         </>

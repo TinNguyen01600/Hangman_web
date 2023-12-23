@@ -16,7 +16,7 @@ const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable,
 
     return (
         <div>
-            {isWin && <ConfettiExplosion />}
+            {isWin && <ConfettiExplosion force={0.9} height='500vh' width={2000} duration={5000} />}
             <Popup
                 open={isLose || isWin}
                 modal
@@ -31,16 +31,16 @@ const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable,
                             <motion.button
                                 onClick={playAgain}
                                 className="play-again-btn"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                                whileHover={{ scale: 1.15 }}
+                                whileTap={{ scale: 0.85, rotate: '2.5deg' }}
                             >
                                 PLay Again
                             </motion.button>
                             <motion.button
                                 className="close-btn"
                                 onClick={close}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                                whileHover={{ scale: 1.15 }}
+                                whileTap={{ scale: 0.85, rotate: '2.5deg' }}
                             >
                                 Close
                             </motion.button>

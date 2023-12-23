@@ -1,16 +1,13 @@
-import React from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { motion } from 'framer-motion';
 
-const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
+const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter}) => {
+    const repeated = wrongLetters.some(letter => letter === enteredLetter) || correctLetters.some(letter => letter === enteredLetter)
     return (
         <div>
             <Popup
-                open={
-                    wrongLetters.some(letter => letter === enteredLetter) ||
-                    correctLetters.some(letter => letter === enteredLetter)
-                }
+                open={repeated}
                 modal
                 nested
                 contentStyle={popupStyles}
@@ -22,8 +19,8 @@ const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnt
                         <motion.button
                             className="close-btn"
                             onClick={close}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9, rotate: '2.5deg' }}
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.85, rotate: '2.5deg' }}
                         >
                             Close
                         </motion.button>
