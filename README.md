@@ -1,6 +1,8 @@
 Package used:
 - framer-motion
 - reactjs-popup
+- react-confetti-explosion
+- @mui/icons-material
 
 # React + Vite
 

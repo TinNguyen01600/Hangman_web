@@ -108,3 +108,18 @@ body {
     cursor: pointer;
     border: 2px solid black;
 }
+
+/***********************************************************************/
+
+.notification-ctn {
+    border: 2px solid black;
+    height: 70px;
+    width: 500px;
+    background-color: yellow;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}

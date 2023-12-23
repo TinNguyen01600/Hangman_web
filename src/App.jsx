@@ -20,6 +20,12 @@ function App() {
     const [showNotification, setShowNotification] = useState(false)
 
     useEffect(() => {
+        const showNoti = () => {
+            if (wrongLetters.length >= 2 && wrongLetters.length <= 5) {
+                setShowNotification(true)
+                setTimeout(() => setShowNotification(false), 3000)
+            }
+        }
         const handleKeydown = event => {
             const { key, keyCode } = event
             if (playable && keyCode >= 65 && keyCode <= 90) {
@@ -34,6 +40,7 @@ function App() {
                     }
                 }
                 else {
+                    showNoti()
                     if (!wrongLetters.includes(letter)) {
                         setWrongLetters(currentLetters => [...currentLetters, letter])
                     }
@@ -47,18 +54,6 @@ function App() {
         // listen for the event 'press key down' from window
         // then func handleKeydown is called
         window.addEventListener('keydown', handleKeydown)
-
-        /*************************************************************************** */
-
-        const showNoti = () => {
-            if (wrongLetters.length >= 3) {
-                setShowNotification(true)
-                setTimeout(() => setShowNotification(false), 2000)
-            }
-        }
-        showNoti()
-
-        /*************************************************************************** */
 
         // clean up all the event listeners created
         // so we only have 1 EL at 1 time
