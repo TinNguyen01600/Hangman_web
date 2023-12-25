@@ -2,9 +2,12 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { motion } from 'framer-motion';
 import ErrorOutlineSharpIcon from '@mui/icons-material/ErrorOutlineSharp';
+import { useSelector } from 'react-redux';
 
-const RepeatLetterPopup = ({ correctLetters, wrongLetters, enteredLetter, setEnteredLetter }) => {
-    const repeated = wrongLetters.some(letter => letter === enteredLetter) || correctLetters.some(letter => letter === enteredLetter)
+const RepeatLetterPopup = ({ wrongLetters, enteredLetter, setEnteredLetter }) => {
+    const cl = useSelector(state => state.word.correctLetters)
+    
+    const repeated = wrongLetters.some(letter => letter === enteredLetter) || cl.some(letter => letter === enteredLetter)
     return (
         <div>
             <Popup

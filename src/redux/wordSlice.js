@@ -8,10 +8,13 @@ const wordSlice = createSlice({
     },
     reducers: {
         appendCorrectLetters: (state, action) => {
-
+            state.correctLetters = [...state.correctLetters, action.payload]
+        },
+        appendWrongLetters: (state, action) => {
+            state.wrongLetters = [...state.wrongLetters, action.payload]
         }
     }
 })
 
-export const { appendCorrectLetters } = wordSlice.actions
+export const { appendCorrectLetters, appendWrongLetters } = wordSlice.actions
 export default wordSlice.reducer

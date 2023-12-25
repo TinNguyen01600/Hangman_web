@@ -8,6 +8,9 @@ import RepeatLetterPopup from './components/RepeatLetterPopup'
 import Notification from './components/Notification'
 import { useEffect, useState } from 'react'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { appendCorrectLetters, appendWrongLetters } from './redux/wordSlice'
+
 const words = ['react', 'tranquil', 'mechanization', 'christmas']
 let selectedWord = words[Math.floor(Math.random() * words.length)]
 
@@ -18,6 +21,8 @@ function App() {
     const [wrongLetters, setWrongLetters] = useState([])
     const [enteredLetter, setEnteredLetter] = useState('')
     const [showNotification, setShowNotification] = useState(false)
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const showNoti = () => {
@@ -33,6 +38,7 @@ function App() {
                 if (selectedWord.includes(letter)) {
                     if (!correctLetters.includes(letter)) {
                         setCorrectLetters(currentLetters => [...currentLetters, letter])
+                        dispatch(appendCorrectLetters(letter))
                     }
                     else {
                         // show notification for repeated correct letters
@@ -42,6 +48,7 @@ function App() {
                 else {
                     if (!wrongLetters.includes(letter)) {
                         setWrongLetters(currentLetters => [...currentLetters, letter])
+                        dispatch(appendWrongLetters(letter))
                         showNoti()
                     }
                     else {
@@ -74,9 +81,8 @@ function App() {
             <div className='game-ctn'>
                 <Figure wrongLetters={wrongLetters} />
                 <WrongLetters wrongLetters={wrongLetters} />
-                <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+                <Word selectedWord={selectedWord} />
                 <RepeatLetterPopup
-                    correctLetters={correctLetters}
                     wrongLetters={wrongLetters}
                     enteredLetter={enteredLetter}
                     setEnteredLetter={setEnteredLetter}

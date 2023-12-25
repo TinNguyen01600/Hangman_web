@@ -1,12 +1,15 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Popup from "reactjs-popup"
 import 'reactjs-popup/dist/index'
 import ConfettiExplosion from 'react-confetti-explosion';
 import { motion } from "framer-motion";
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import { useSelector } from "react-redux";
 
-const EndgamePopup = ({ correctLetters, wrongLetters, selectedWord, setPlayable, playAgain }) => {
+const EndgamePopup = ({ wrongLetters, selectedWord, setPlayable, playAgain }) => {
+    const correctLetters = useSelector(state => state.word.correctLetters)
+    
     const isWin = selectedWord.split('').every(letter => correctLetters.includes(letter))
     const isLose = wrongLetters.length === 6
     const finalMessage = isLose 
