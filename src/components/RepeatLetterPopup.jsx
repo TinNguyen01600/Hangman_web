@@ -2,13 +2,16 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { motion } from 'framer-motion';
 import ErrorOutlineSharpIcon from '@mui/icons-material/ErrorOutlineSharp';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEnteredLetter } from '../redux/gameplaySlice';
 
-const RepeatLetterPopup = ({ enteredLetter, setEnteredLetter }) => {
+const RepeatLetterPopup = () => {
     const correctLetters = useSelector(state => state.word.correctLetters)
     const wrongLetters = useSelector(state => state.word.wrongLetters)
+    const enteredLetter = useSelector(state => state.gameplay.enteredLetter)
     
-    const repeated = wrongLetters.some(letter => letter === enteredLetter) || correctLetters.some(letter => letter === enteredLetter)
+    let repeated = wrongLetters.some(letter => letter === enteredLetter) || correctLetters.some(letter => letter === enteredLetter)
+    const dispatch = useDispatch()
     return (
         <div>
             <Popup
@@ -16,7 +19,7 @@ const RepeatLetterPopup = ({ enteredLetter, setEnteredLetter }) => {
                 modal
                 nested
                 contentStyle={popupStyles}
-                onClose={() => setEnteredLetter('')}    // called whenever popup box close, regardless of whether it was closed by clicking the close button inside the popup or clicking outside the popup.
+                onClose={() => dispatch(setEnteredLetter(''))}    // called whenever popup box close, regardless of whether it was closed by clicking the close button inside the popup or clicking outside the popup.
             >
                 {close => (
                     <div className='pop-up-content'>

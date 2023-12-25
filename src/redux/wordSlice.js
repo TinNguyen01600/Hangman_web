@@ -15,9 +15,12 @@ const wordSlice = createSlice({
         },
         appendWrongLetters: (state, action) => {
             state.wrongLetters = [...state.wrongLetters, action.payload]
-        }
+        }, 
+        resetWrongLetters: state => void(state.wrongLetters = []),
+        resetCorrectLetters: state => void(state.correctLetters = []),
+        resetSelectedWord: state => void(state.selectedWord = words[Math.floor(Math.random() * words.length)]),
     }
 })
 
-export const { appendCorrectLetters, appendWrongLetters } = wordSlice.actions
+export const { appendCorrectLetters, appendWrongLetters, resetCorrectLetters, resetWrongLetters, resetSelectedWord } = wordSlice.actions
 export default wordSlice.reducer

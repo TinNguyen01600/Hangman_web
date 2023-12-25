@@ -6,9 +6,7 @@ const gameplaySlice = createSlice({
         enteredLetter: '',
     },
     reducers: {
-        setEnteredLetter: (state, action) => {
-            state.enteredLetter = action.payload
-        }
+        setEnteredLetter: (state, action) => void(state.enteredLetter = action.payload)
     }
 })
 

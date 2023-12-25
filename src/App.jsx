@@ -9,18 +9,18 @@ import Notification from './components/Notification'
 import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { appendCorrectLetters, appendWrongLetters } from './redux/wordSlice'
+import { appendCorrectLetters, appendWrongLetters, resetCorrectLetters, resetWrongLetters, resetSelectedWord } from './redux/wordSlice'
+import { setEnteredLetter } from './redux/gameplaySlice'
 
 
 function App() {
     const [playable, setPlayable] = useState(true)
-    const [correctLetters, setCorrectLetters] = useState([])
-    const [wrongLetters, setWrongLetters] = useState([])
-    const [enteredLetter, setEnteredLetter] = useState('')
     const [showNotification, setShowNotification] = useState(false)
 
     const dispatch = useDispatch()
     const selectedWord = useSelector(state => state.word.selectedWord)
+    const correctLetters = useSelector(state => state.word.correctLetters)
+    const wrongLetters = useSelector(state => state.word.wrongLetters)
 
     useEffect(() => {
         const showNoti = () => {
@@ -35,23 +35,21 @@ function App() {
                 const letter = key.toLowerCase()
                 if (selectedWord.includes(letter)) {
                     if (!correctLetters.includes(letter)) {
-                        setCorrectLetters(currentLetters => [...currentLetters, letter])
                         dispatch(appendCorrectLetters(letter))
                     }
                     else {
                         // show notification for repeated correct letters
-                        setEnteredLetter(letter)
+                        dispatch(setEnteredLetter(letter))
                     }
                 }
                 else {
                     if (!wrongLetters.includes(letter)) {
-                        setWrongLetters(currentLetters => [...currentLetters, letter])
                         dispatch(appendWrongLetters(letter))
                         showNoti()
                     }
                     else {
                         // show notification for repeated wrong letters
-                        setEnteredLetter(letter)
+                        dispatch(setEnteredLetter(letter))
                     }
                 }
             }
@@ -66,10 +64,10 @@ function App() {
     }, [correctLetters, wrongLetters, playable])
 
     const playAgain = () => {
-        setCorrectLetters([])
-        setWrongLetters([])
+        dispatch(resetWrongLetters())
+        dispatch(resetCorrectLetters())
+        dispatch(resetSelectedWord())
         setPlayable(true)
-        window.location.reload(false);
     }
 
     return (
@@ -80,8 +78,6 @@ function App() {
                 <WrongLetters />
                 <Word />
                 <RepeatLetterPopup
-                    enteredLetter={enteredLetter}
-                    setEnteredLetter={setEnteredLetter}
                     setPlayable={setPlayable}
                 />
                 <EndgamePopup
