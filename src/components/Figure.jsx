@@ -1,4 +1,7 @@
-const Figure = ({ wrongLetters }) => {
+import { useSelector } from "react-redux"
+
+const Figure = () => {
+    const wrongLetters = useSelector(state => state.word.wrongLetters)
     const error = wrongLetters.length
     return (
         <svg width="250" height="200" className="figure-ctn">

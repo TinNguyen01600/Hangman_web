@@ -76,9 +76,9 @@ function App() {
         <>
             <Header />
             <div className='game-ctn'>
-                <Figure wrongLetters={wrongLetters} />
-                <WrongLetters wrongLetters={wrongLetters} />
-                <Word selectedWord={selectedWord} />
+                <Figure />
+                <WrongLetters />
+                <Word />
                 <RepeatLetterPopup
                     enteredLetter={enteredLetter}
                     setEnteredLetter={setEnteredLetter}

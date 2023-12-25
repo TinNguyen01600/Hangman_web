@@ -1,4 +1,7 @@
-const WrongLetters = ({ wrongLetters }) => {
+import { useSelector } from "react-redux"
+
+const WrongLetters = () => {
+    const wrongLetters = useSelector(state => state.word.wrongLetters)
     return (
         <>
             <div className="wrong-letters-ctn">

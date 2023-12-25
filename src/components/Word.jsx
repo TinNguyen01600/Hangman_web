@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { useSelector } from "react-redux"
 
-const Word = ({ selectedWord }) => {
+const Word = () => {
     const boxVariant = {
         initial: { x: '75vw' },
         visible: {
@@ -25,6 +25,7 @@ const Word = ({ selectedWord }) => {
         }
     }
 
+    const selectedWord = useSelector(state => state.word.selectedWord)
     const correctLetters = useSelector(state => state.word.correctLetters)
 
     return (
