@@ -9,18 +9,17 @@ import Notification from './components/Notification'
 import { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { appendCorrectLetters, appendWrongLetters, resetCorrectLetters, resetWrongLetters, resetSelectedWord } from './redux/wordSlice'
+import { appendCorrectLetters, appendWrongLetters } from './redux/wordSlice'
 import { setEnteredLetter } from './redux/gameplaySlice'
 
-
 function App() {
-    const [playable, setPlayable] = useState(true)
     const [showNotification, setShowNotification] = useState(false)
 
     const dispatch = useDispatch()
     const selectedWord = useSelector(state => state.word.selectedWord)
     const correctLetters = useSelector(state => state.word.correctLetters)
     const wrongLetters = useSelector(state => state.word.wrongLetters)
+    const playable = useSelector(state => state.gameplay.playable)
 
     useEffect(() => {
         const showNoti = () => {
@@ -63,13 +62,6 @@ function App() {
         return () => window.removeEventListener('keydown', handleKeydown)
     }, [correctLetters, wrongLetters, playable])
 
-    const playAgain = () => {
-        dispatch(resetWrongLetters())
-        dispatch(resetCorrectLetters())
-        dispatch(resetSelectedWord())
-        setPlayable(true)
-    }
-
     return (
         <>
             <Header />
@@ -77,13 +69,8 @@ function App() {
                 <Figure />
                 <WrongLetters />
                 <Word />
-                <RepeatLetterPopup
-                    setPlayable={setPlayable}
-                />
-                <EndgamePopup
-                    setPlayable={setPlayable}
-                    playAgain={playAgain}
-                />
+                <RepeatLetterPopup />
+                <EndgamePopup />
             </div>
             <Notification
                 showNotification={showNotification}
