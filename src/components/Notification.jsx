@@ -1,7 +1,9 @@
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
-const Notification = ({ showNotification, wrongLetters }) => {
+const Notification = ({ showNotification }) => {
+    const wrongLetters = useSelector(state => state.word.wrongLetters)
     const attempts = 6 - wrongLetters.length
     return (
         <>

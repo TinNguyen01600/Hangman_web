@@ -7,8 +7,10 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { useSelector } from "react-redux";
 
-const EndgamePopup = ({ wrongLetters, selectedWord, setPlayable, playAgain }) => {
+const EndgamePopup = ({ setPlayable, playAgain }) => {
     const correctLetters = useSelector(state => state.word.correctLetters)
+    const wrongLetters = useSelector(state => state.word.wrongLetters)
+    const selectedWord = useSelector(state => state.word.selectedWord)
     
     const isWin = selectedWord.split('').every(letter => correctLetters.includes(letter))
     const isLose = wrongLetters.length === 6

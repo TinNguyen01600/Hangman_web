@@ -11,9 +11,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { appendCorrectLetters, appendWrongLetters } from './redux/wordSlice'
 
-const words = ['react', 'tranquil', 'mechanization', 'christmas']
-let selectedWord = words[Math.floor(Math.random() * words.length)]
-
 
 function App() {
     const [playable, setPlayable] = useState(true)
@@ -23,6 +20,7 @@ function App() {
     const [showNotification, setShowNotification] = useState(false)
 
     const dispatch = useDispatch()
+    const selectedWord = useSelector(state => state.word.selectedWord)
 
     useEffect(() => {
         const showNoti = () => {
@@ -71,7 +69,6 @@ function App() {
         setCorrectLetters([])
         setWrongLetters([])
         setPlayable(true)
-        selectedWord = words[Math.floor(Math.random() * words.length)]
         window.location.reload(false);
     }
 
@@ -83,22 +80,17 @@ function App() {
                 <WrongLetters wrongLetters={wrongLetters} />
                 <Word selectedWord={selectedWord} />
                 <RepeatLetterPopup
-                    wrongLetters={wrongLetters}
                     enteredLetter={enteredLetter}
                     setEnteredLetter={setEnteredLetter}
                     setPlayable={setPlayable}
                 />
                 <EndgamePopup
-                    correctLetters={correctLetters}
-                    wrongLetters={wrongLetters}
-                    selectedWord={selectedWord}
                     setPlayable={setPlayable}
                     playAgain={playAgain}
                 />
             </div>
             <Notification
                 showNotification={showNotification}
-                wrongLetters={wrongLetters}
             />
         </>
     )

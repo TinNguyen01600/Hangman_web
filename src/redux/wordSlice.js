@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const words = ['react', 'tranquil', 'mechanization', 'christmas']
+
 const wordSlice = createSlice({
     name: 'word',
     initialState: {
+        selectedWord: words[Math.floor(Math.random() * words.length)],
         correctLetters: [],
         wrongLetters: []
     },
